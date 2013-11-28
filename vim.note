@@ -1,0 +1,4 @@
+./configure --enable-cscope --enable-multibyte --enable-xim --enable-fontset \
+--enable-perlinterp --enable-pythoninterp --enable-rubyinterp \
+--with-x --enable-gui=auto \
+--with-features=huge --prefix=/home/sunsd/vim74
