@@ -102,25 +102,43 @@ Bundle 'vim-plugin-bar'
 " syntax
 Bundle 'Enhanced-Javascript-syntax'
 Bundle 'html5.vim'
+
 " color
+
 " ftplugin
 Bundle 'xml.vim'
+
 " indent
 Bundle 'OOP-javascript-indentation'
 Bundle 'php-correct-Indenting'
+
 " plugin
 Bundle 'L9'
-Bundle 'VimIM'
+"Bundle 'VimIM'
 Bundle 'mru.vim'
 Bundle 'Mark'
 Bundle 'ViMail'
 Bundle 'checksyntax'
-Bundle 'taglist.vim'
+"Bundle 'taglist.vim'
 Bundle 'csv.vim'
-Bundle 'cscope.vim'
+"Bundle 'cscope.vim'
 Bundle 'dbext.vim'
-Bundle 'project.tar.gz'
-Bundle 'c.vim--Fritz-Mehner'
+"Bundle 'project.tar.gz'
+"Bundle 'c.vim--Fritz-Mehner'
+
+Bundle 'ctrlp.vim'
+Bundle 'AutoClose'
+Bundle 'ZenCoding.vim'
+Bundle 'matchit.zip'
+Bundle 'ShowTrailingWhitespace'
+"Bundle '_jsbeautify'
+"Bundle 'EasyMotion'
+"Bundle 'FencView.vim'
+"Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
+"Bundle 'UltiSnips'
+"Bundle 'Tabular'
+Bundle 'Valloric/YouCompleteMe'
 
 "Bundle 'Lokaltog/vim-powerline'
 "set ls=2 "laststatus
@@ -178,7 +196,7 @@ function Do_CsTag()
     if(executable('ctags'))
         "silent! execute "!ctags -R --c-types=+p --fields=+S *"
         silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-        "ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+iaS --extra=+q --exclude=path --exclude=file.ext
+        "ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+iaSKz --extra=+q --exclude=path --exclude=file.ext
     endif
     if(executable('cscope') && has("cscope") )
         if(g:iswindows!=1)
