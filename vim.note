@@ -1,4 +1,5 @@
 ./configure --enable-cscope --enable-multibyte --enable-xim --enable-fontset \
---enable-perlinterp --enable-pythoninterp --enable-rubyinterp \
+--enable-perlinterp --enable-rubyinterp --enable-pythoninterp \
+--with-python-config-dir=/usr/lib/python2.7/config \
 --with-x --enable-gui=auto \
 --with-features=huge --prefix=/home/sunsd/vim74

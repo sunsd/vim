@@ -138,7 +138,7 @@ Bundle 'ShowTrailingWhitespace'
 Bundle 'The-NERD-Commenter'
 "Bundle 'UltiSnips'
 "Bundle 'Tabular'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 "Bundle 'Lokaltog/vim-powerline'
 "set ls=2 "laststatus
