@@ -110,7 +110,7 @@ Bundle 'xml.vim'
 
 " indent
 Bundle 'OOP-javascript-indentation'
-Bundle 'php-correct-Indenting'
+Bundle 'PHP-correct-Indenting'
 
 " plugin
 Bundle 'L9'
