@@ -1,0 +1,2 @@
+1. all programs install into ~/local, through specify PREFIX=~/local in configure or modify Makefile.
+2. 

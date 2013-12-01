@@ -11,8 +11,13 @@ colo desert
 " number of colors
 "set t_Co=256
 
-" compatible 
+" compatible
 set nocp
+
+" backspace
+set bs=indent,eol,start
+" whichwrap
+set ww=b,s,<,>,[,]
 
 " encoding
 set enc=utf-8
@@ -21,8 +26,15 @@ set fencs=utf-8,usc-bom,cp936,gb18030,gbk,gb2312,big5,enc-jp
 " fileformats
 set ffs=unix,dos,mac
 
+"backup
+set bk
+"backupdir, set in ~/.bashrc: export BDIR=~/tmp/vim
+set bdir=$BDIR
+
+au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
+
 " history
-set hi=50
+set hi=100
 
 " cursorline
 set nocul
@@ -62,11 +74,6 @@ set ru
 
 " lazyredraw
 set nolz
-
-" backspace
-set bs=indent,eol,start
-" whichwrap
-set ww=b,s,<,>,[,]
 
 
 if(g:iswindows==1)
@@ -119,7 +126,7 @@ Bundle 'mru.vim'
 Bundle 'Mark'
 Bundle 'ViMail'
 Bundle 'checksyntax'
-"Bundle 'taglist.vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'csv.vim'
 "Bundle 'cscope.vim'
 Bundle 'dbext.vim'
@@ -134,11 +141,11 @@ Bundle 'ShowTrailingWhitespace'
 "Bundle '_jsbeautify'
 "Bundle 'EasyMotion'
 "Bundle 'FencView.vim'
-"Bundle 'The-NERD-tree'
+Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
 "Bundle 'UltiSnips'
 "Bundle 'Tabular'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 
 "Bundle 'Lokaltog/vim-powerline'
 "set ls=2 "laststatus
@@ -150,9 +157,12 @@ filetype plugin indent on
 let g:winManagerWindowLayout='FileExplorer' "|TagList
 "let g:persistentBehaviour=0
 "let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavVim = 1
 
-nmap wm :WMToggle<cr>
+nmap wm :NERDTreeToggle<cr>
+let NERDTreeWinPos='right'
+let NERDTreeWinSize=30
+
 map <F7> :call Do_CsTag()<CR>
 "<<<
 function Do_CsTag()
