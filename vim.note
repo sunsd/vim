@@ -1,5 +1,14 @@
-./configure --enable-cscope --enable-multibyte --enable-xim --enable-fontset \
---enable-perlinterp --enable-rubyinterp --enable-pythoninterp \
+./configure \
+--enable-cscope \
+--enable-multibyte \
+--enable-xim \
+--enable-fontset \
+--enable-rubyinterp \
+--enable-perlinterp \
+--enable-luainterp \
+--enable-pythoninterp \
 --with-python-config-dir=/usr/lib/python2.7/config \
---with-x --enable-gui=auto \
---with-features=huge --prefix=/home/sunsd/vim74
+--with-x \
+--enable-gui=auto \
+--with-features=huge \
+--prefix=/home/sunsd/local/vim74
