@@ -107,6 +107,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'vim-plugin-bar'
 
 " syntax
+Bundle STL-improved
 Bundle 'Enhanced-Javascript-syntax'
 "Bundle 'html5.vim'
 
