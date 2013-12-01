@@ -103,12 +103,12 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'vim-plugin-foo'
-Bundle 'vim-plugin-bar'
+"Bundle 'vim-plugin-foo'
+"Bundle 'vim-plugin-bar'
 
 " syntax
 Bundle 'Enhanced-Javascript-syntax'
-Bundle 'html5.vim'
+"Bundle 'html5.vim'
 
 " color
 
@@ -134,15 +134,20 @@ Bundle 'dbext.vim'
 "Bundle 'c.vim--Fritz-Mehner'
 
 Bundle 'ctrlp.vim'
+  let g:ctrlp_cmd = 'CtrlPMRU'
 Bundle 'AutoClose'
 Bundle 'ZenCoding.vim'
 Bundle 'matchit.zip'
 Bundle 'ShowTrailingWhitespace'
-"Bundle '_jsbeautify'
+Bundle 'jsbeautify'
 "Bundle 'EasyMotion'
 "Bundle 'FencView.vim'
 Bundle 'The-NERD-tree'
+  nmap wm :NERDTreeToggle<cr>
+  let NERDTreeWinPos='right'
+  let NERDTreeWinSize=30
 Bundle 'The-NERD-Commenter'
+  map <c-h> ,c<space>
 "Bundle 'UltiSnips'
 "Bundle 'Tabular'
 Bundle 'Valloric/YouCompleteMe'
@@ -154,14 +159,13 @@ Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
 ">>>
 
+let mapleader = ","
+
 let g:winManagerWindowLayout='FileExplorer' "|TagList
 "let g:persistentBehaviour=0
 "let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplMapWindowNavVim = 1
 
-nmap wm :NERDTreeToggle<cr>
-let NERDTreeWinPos='right'
-let NERDTreeWinSize=30
 
 map <F7> :call Do_CsTag()<CR>
 "<<<
