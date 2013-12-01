@@ -107,7 +107,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'vim-plugin-bar'
 
 " syntax
-Bundle STL-improved
+Bundle 'STL-improved'
 Bundle 'Enhanced-Javascript-syntax'
 "Bundle 'html5.vim'
 
@@ -115,6 +115,7 @@ Bundle 'Enhanced-Javascript-syntax'
 
 " ftplugin
 Bundle 'xml.vim'
+"Bundle 'lint.vim'
 
 " indent
 Bundle 'OOP-javascript-indentation'
@@ -123,7 +124,7 @@ Bundle 'PHP-correct-Indenting'
 " plugin
 Bundle 'L9'
 "Bundle 'VimIM'
-Bundle 'mru.vim'
+"Bundle 'mru.vim'
 Bundle 'Mark'
 Bundle 'ViMail'
 Bundle 'checksyntax'
