@@ -1,0 +1,9 @@
+#!/bin/sh
+# 2013/12/02, sunsd
+
+INSTDIR=webframes6
+fp=$1
+if [ "${fp:0:1}" != "/" ]; then
+    fp="`pwd`/$fp"
+fi
+.dosu cp $fp $CCRUN/htdocs/$INSTDIR/${fp#*webframe/}

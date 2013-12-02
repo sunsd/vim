@@ -169,6 +169,15 @@ let g:winManagerWindowLayout='FileExplorer' "|TagList
 let g:miniBufExplMapWindowNavVim = 1
 
 
+map <F11> :call Cf2wf()<CR>
+"copy file to webframe dir
+function Cf2wf()
+    let path = expand("%:p")
+    if(executable('wp'))
+        execute "!wp ".path
+    endif
+endfunction
+
 map <F7> :call Do_CsTag()<CR>
 "<<<
 function Do_CsTag()
