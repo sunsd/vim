@@ -11,8 +11,13 @@ colo desert
 " number of colors
 "set t_Co=256
 
-" compatible 
+" compatible
 set nocp
+
+" backspace
+set bs=indent,eol,start
+" whichwrap
+set ww=b,s,<,>,[,]
 
 " encoding
 set enc=utf-8
@@ -21,8 +26,15 @@ set fencs=utf-8,usc-bom,cp936,gb18030,gbk,gb2312,big5,enc-jp
 " fileformats
 set ffs=unix,dos,mac
 
+"backup
+set bk
+"backupdir, set in ~/.bashrc: export BDIR=~/tmp/vim
+set bdir=$BDIR
+
+au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
+
 " history
-set hi=50
+set hi=100
 
 " cursorline
 set nocul
@@ -63,11 +75,6 @@ set ru
 " lazyredraw
 set nolz
 
-" backspace
-set bs=indent,eol,start
-" whichwrap
-set ww=b,s,<,>,[,]
-
 
 if(g:iswindows==1)
     if has('mouse')
@@ -96,17 +103,19 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'vim-plugin-foo'
-Bundle 'vim-plugin-bar'
+"Bundle 'vim-plugin-foo'
+"Bundle 'vim-plugin-bar'
 
 " syntax
+Bundle 'STL-improved'
 Bundle 'Enhanced-Javascript-syntax'
-Bundle 'html5.vim'
+"Bundle 'html5.vim'
 
 " color
 
 " ftplugin
 Bundle 'xml.vim'
+"Bundle 'lint.vim'
 
 " indent
 Bundle 'OOP-javascript-indentation'
@@ -115,11 +124,11 @@ Bundle 'PHP-correct-Indenting'
 " plugin
 Bundle 'L9'
 "Bundle 'VimIM'
-Bundle 'mru.vim'
+"Bundle 'mru.vim'
 Bundle 'Mark'
 Bundle 'ViMail'
 Bundle 'checksyntax'
-"Bundle 'taglist.vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'csv.vim'
 "Bundle 'cscope.vim'
 Bundle 'dbext.vim'
@@ -127,18 +136,23 @@ Bundle 'dbext.vim'
 "Bundle 'c.vim--Fritz-Mehner'
 
 Bundle 'ctrlp.vim'
+  let g:ctrlp_cmd = 'CtrlPMRU'
 Bundle 'AutoClose'
 Bundle 'ZenCoding.vim'
 Bundle 'matchit.zip'
 Bundle 'ShowTrailingWhitespace'
-"Bundle '_jsbeautify'
+Bundle 'jsbeautify'
 "Bundle 'EasyMotion'
 "Bundle 'FencView.vim'
-"Bundle 'The-NERD-tree'
+Bundle 'The-NERD-tree'
+  nmap wm :NERDTreeToggle<cr>
+  let NERDTreeWinPos='right'
+  let NERDTreeWinSize=30
 Bundle 'The-NERD-Commenter'
+  map <c-h> ,c<space>
 "Bundle 'UltiSnips'
 "Bundle 'Tabular'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 
 "Bundle 'Lokaltog/vim-powerline'
 "set ls=2 "laststatus
@@ -147,12 +161,14 @@ Bundle 'The-NERD-Commenter'
 filetype plugin indent on
 ">>>
 
+let mapleader = ","
+
 let g:winManagerWindowLayout='FileExplorer' "|TagList
 "let g:persistentBehaviour=0
 "let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavVim = 1
 
-nmap wm :WMToggle<cr>
+
 map <F7> :call Do_CsTag()<CR>
 "<<<
 function Do_CsTag()
