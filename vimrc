@@ -9,7 +9,7 @@ endif
 colo desert
 
 " number of colors
-"set t_Co=256
+set t_Co=256
 
 " compatible
 set nocp
@@ -116,6 +116,8 @@ Bundle 'Enhanced-Javascript-syntax'
 " ftplugin
 Bundle 'xml.vim'
 "Bundle 'lint.vim'
+"Bundle 'skammer/vim-css-color'
+let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " indent
 Bundle 'OOP-javascript-indentation'
