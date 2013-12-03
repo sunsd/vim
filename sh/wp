@@ -1,9 +1,14 @@
 #!/bin/sh
 # 2013/12/02, sunsd
 
-INSTDIR=webframes6
-fp=$1
-if [ "${fp:0:1}" != "/" ]; then
-    fp="`pwd`/$fp"
+f=$1
+if [ "${f:0:1}" != "/" ]; then
+    f="`pwd`/$f"
 fi
-.dosu cp $fp $CCRUN/htdocs/$INSTDIR/${fp#*webframe/}
+INSTDIR=$CCRUN/htdocs/webframes6
+cmd=".dosu cp $f $INSTDIR/${f#*webframe/}"
+echo $cmd
+eval $cmd
+if [ $? -eq 0 ]; then
+    echo "[7mDone.[0m"
+fi
