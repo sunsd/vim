@@ -112,6 +112,10 @@ Bundle 'Enhanced-Javascript-syntax'
 "Bundle 'html5.vim'
 
 " color
+Bundle 'desert.vim'
+Bundle 'molokai'
+let g:molokai_original=1
+Bundle 'robokai'
 
 " ftplugin
 Bundle 'xml.vim'
