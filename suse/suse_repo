@@ -1,0 +1,7 @@
+#!/bin/sh
+sudo zypper mr -d openSUSE-13.1-1.10
+sudo zypper mr -d openSUSE-13.1-Oss openSUSE-13.1-Non-Oss openSUSE-13.1-Update openSUSE-13.1-Update-Non-Oss
+sudo zypper ar -f http://mirrors.sohu.com/opensuse/distribution/13.1/repo/oss/ openSUSE-13.1-Oss-sohu-mirror
+sudo zypper ar -f http://mirrors.sohu.com/opensuse/distribution/13.1/repo/non-oss/ openSUSE-13.1-Non-Oss-sohu-mirror
+sudo zypper ar -f http://mirrors.sohu.com/opensuse/update/13.1/ openSUSE-13.1-Update-sohu-mirror
+sudo zypper ar -f http://mirrors.sohu.com/opensuse/update/13.1-non-oss/ openSUSE-13.1-Update-Non-Oss-sohu-mirror
