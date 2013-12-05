@@ -1,7 +1,8 @@
 #!/bin/sh
 F="/tmp/tmp.wait"
 #
-trap '' 2
+trap "echo '4 ' > $F; echo ' INTERRUPTED!'; exit" 2
+
 if [ -f "$F" ]; then
     rm -f $F
 fi
@@ -12,7 +13,7 @@ echo "$2"
 {
     #put "exec 1>/tmp/tmp.exec 2>&1" in file $1
     . "$1"
-    echo "OK." > $F
+    echo "$? " >$F
 }&
 
 {
@@ -30,7 +31,7 @@ echo "$2"
                 #RESULT=`head -n1 $F`
                 #STATUS=${RESULT%% *}
                 STATUS=`awk -F "[ .!]" '{if (NR==2) exit; print $1;}' $F`
-                if [ $STATUS != "OK" ]; then
+                if [ $STATUS != "0" ]; then
                     OUT="FAILED!"
                 fi
                 tput el
