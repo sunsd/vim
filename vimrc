@@ -5,14 +5,17 @@ else
     let g:iswindows=0
 endif
 
-" colorscheme
-colo desert
+" compatible
+set nocp
 
 " number of colors
 set t_Co=256
 
-" compatible
-set nocp
+" colorscheme
+colo molokai
+
+" line number
+set nu
 
 " backspace
 set bs=indent,eol,start
@@ -174,6 +177,7 @@ let g:winManagerWindowLayout='FileExplorer' "|TagList
 "let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplMapWindowNavVim = 1
 
+map <C-W>t :tabnew<cr>
 
 map <F11> :call Cf2wf()<CR>
 "copy file to webframe dir
