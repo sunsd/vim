@@ -132,9 +132,11 @@ Bundle 'PHP-correct-Indenting'
 " plugin
 Bundle 'L9'
 "Bundle 'VimIM'
+Bundle ack.vim
+" test ag, tmux, etc sometime
 Bundle 'Mark'
 Bundle 'ViMail'
-Bundle 'checksyntax'
+Bundle 'Syntastic'
 Bundle 'mattn/emmet-vim'
 Bundle 'csv.vim'
 "Bundle 'cscope.vim'
@@ -160,6 +162,7 @@ Bundle 'UltiSnips'
   let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "Bundle 'Tabular'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'ervandew/supertab'
 
 "Bundle 'Lokaltog/vim-powerline'
 "set ls=2 "laststatus
