@@ -1,0 +1,4 @@
+#! /bin/sh
+# 2013/12/08, sunsd
+dir=$(pd)
+cd $dir
