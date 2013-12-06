@@ -1,4 +1,5 @@
 
+alias a='alias'
 alias ...='. ~/.bashrc'
 alias vi='vim'
 #backup dir, used in ~/.vimrc
