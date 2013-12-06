@@ -1,13 +1,14 @@
 #!/bin/sh
 # 2012/12/12, sunsd
+# print the root directory of the project
 pdirname()
 {
     dir=/project/$PROJ/ccsrc
     if [ "$PROJ" = "" ]; then
         echo "Warning: PROJ is null! Reset..." >&2
-        dir=$(cd2 3)
+        dir=$(ct 4)
         if [[ $dir = /ccsrc* ]]; then
-            dir=$(cd2 1)
+            dir=$(ct 2)
         elif [[ $dir != */ccsrc* ]]; then
             echo "Error: None possible value for PROJ!" >&2
             exit 1

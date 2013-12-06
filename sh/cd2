@@ -1,18 +1,4 @@
 #! /bin/sh
 # 2013/12/08, sunsd
-
-echo "$1"|grep -q '^[0-9]\+$'
-if [ $? -eq 0 ]; then
-    let f=$1+1
-    pwd=`pwd`
-    bn=`echo $pwd|cut -d/ -f$f`
-    if [ "$bn" = "" ]; then
-        dir=$pwd
-    else
-        dir=`echo "$pwd"|sed "1 s/\/$bn.*/\/$bn/"`
-    fi
-    echo $dir
-    cd $dir
-else
-    cd "$@"
-fi
+dir=$(ct $1)
+cd $dir

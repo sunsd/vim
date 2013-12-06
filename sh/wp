@@ -1,5 +1,6 @@
 #!/bin/sh
 # 2013/12/02, sunsd
+# install the given file
 
 f=$1
 pwd=`pwd`

@@ -1,0 +1,20 @@
+#! /bin/sh
+# 2013/12/08, sunsd
+# cut the top n level of the directory
+
+# check if argument is consist of digital
+echo $1|grep -q '^[0-9]\+$'
+if [ $? -eq 0 ]; then
+    let f=$1
+    # take / as the first level of directory
+    if [ $f -eq 1 ]; then
+        dir=/
+    else
+        [ "$2" != "" ] && dir="$2" || dir=`pwd`
+        dir=`echo $dir|cut -d/ -f1-$f`
+    fi
+    echo $dir
+else
+    echo "Warning: argument is not right!" >&2
+    exit 1
+fi

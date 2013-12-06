@@ -1,8 +1,8 @@
 #!/bin/sh
 # 2013/12/13, sunsd
-# sc, differ from cs
+# sc, differ from cs, switch between the project's work dir and the install dir
 
-module="webframe"
+module=$MOD
 if [ $# -gt 0 ]; then
     module=$1
 fi
