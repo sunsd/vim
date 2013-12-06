@@ -11,7 +11,7 @@ if [ "$module" = "" ]; then
     echo "Warning: module was not specified!" >&2
     if [[ $pwd = *ccsrc* ]]; then
         guess_mod=`echo $pwd|cut -d/ -f5`
-        (ask "Do you mean this? $guess_mod")
+        (confirm "Take {$guess_mod} as the module afterwards.")
         [ $? -ne 0 ] && exit 1
         module=$guess_mod
     else
