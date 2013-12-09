@@ -118,7 +118,6 @@ Bundle 'Enhanced-Javascript-syntax'
 Bundle 'desert.vim'
 Bundle 'molokai'
 let g:molokai_original=1
-Bundle 'robokai'
 
 " ftplugin
 Bundle 'xml.vim'
@@ -133,7 +132,6 @@ Bundle 'PHP-correct-Indenting'
 " plugin
 Bundle 'L9'
 "Bundle 'VimIM'
-"Bundle 'mru.vim'
 Bundle 'Mark'
 Bundle 'ViMail'
 Bundle 'checksyntax'
@@ -141,13 +139,10 @@ Bundle 'mattn/emmet-vim'
 Bundle 'csv.vim'
 "Bundle 'cscope.vim'
 Bundle 'dbext.vim'
-"Bundle 'project.tar.gz'
-"Bundle 'c.vim--Fritz-Mehner'
 
 Bundle 'ctrlp.vim'
   let g:ctrlp_cmd = 'CtrlPMRU'
 Bundle 'AutoClose'
-Bundle 'ZenCoding.vim'
 Bundle 'matchit.zip'
 Bundle 'ShowTrailingWhitespace'
 Bundle 'jsbeautify'
@@ -159,7 +154,10 @@ Bundle 'The-NERD-tree'
   let NERDTreeWinSize=30
 Bundle 'The-NERD-Commenter'
   map <c-h> ,c<space>
-"Bundle 'UltiSnips'
+Bundle 'UltiSnips'
+  let g:UltiSnipsExpandTrigger="<c-j>"
+  let g:UltiSnipsJumpForwardTrigger="<c-j>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "Bundle 'Tabular'
 Bundle 'Valloric/YouCompleteMe'
 
