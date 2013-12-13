@@ -1,0 +1,5 @@
+#! /bin/sh
+# 2013/4/18, sunsd
+
+f=$1
+rm `cat $f`

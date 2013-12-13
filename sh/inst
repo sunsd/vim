@@ -1,0 +1,18 @@
+#!/bin/sh
+# 2013/12/02, sunsd
+
+HTDOCS=$CCRUN/htdocs
+
+proj=$(pn)
+module="webframe"
+if [ $# -gt 0 ]; then
+    module=$1
+fi
+makefile="/project/$proj/ccsrc/$module/Makefile"
+if [ -e $makefile ]; then
+    INSTDIR=$(grep -m 1 "^INSTALLDIR" $makefile|cut -d= -f2|tr '()' '{}')
+    INSTDIR=$(eval echo $INSTDIR)
+    echo $INSTDIR
+else
+    echo "Error: argument is invalid!"
+fi

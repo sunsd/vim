@@ -1,0 +1,19 @@
+#!/bin/sh
+do_chmod()
+{
+    chmod $MODE $1
+}
+
+process_file()
+{
+    while read line
+    do
+        echo $line
+        $1 $line
+    done < $fl
+}
+
+MODE=$1
+fl=$2
+process_file do_chmod
+# chmod $MODE `cat $fl`

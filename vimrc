@@ -132,7 +132,7 @@ Bundle 'PHP-correct-Indenting'
 " plugin
 Bundle 'L9'
 "Bundle 'VimIM'
-Bundle ack.vim
+Bundle 'ack.vim'
 " test ag, tmux, etc sometime
 Bundle 'Mark'
 Bundle 'ViMail'
