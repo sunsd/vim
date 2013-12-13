@@ -14,5 +14,5 @@ if [ -e $makefile ]; then
     INSTDIR=$(eval echo $INSTDIR)
     echo $INSTDIR
 else
-    echo "Error: argument is invalid!"
+    echo "Error: module not found!"
 fi

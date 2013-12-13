@@ -6,10 +6,8 @@ module="webframe"
 if [ "${f:0:1}" != "/" ]; then
     f="`pwd`/$f"
 fi
-dirname=${f/$module*/$module}
-if [ "$dirname" != "$f" ]; then
-    line=`grep -m 1 "^INSTALLDIR" $dirname/Makefile`
-    INSTDIR="$CCRUN/htdocs/${line#*/}"
+if [[ "$f" = */$module* ]]; then
+    INSTDIR=$(inst $module)
     cmd=".dosu cp $f $INSTDIR/${f#*webframe/}"
     echo $cmd
     eval $cmd
