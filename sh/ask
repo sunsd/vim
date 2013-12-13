@@ -1,0 +1,16 @@
+#! /bin/sh
+# 2013/11/15, sunsd
+ask()
+{
+    echo -n "$@ [y/n] " >&2
+    read ANS
+    case "$ANS" in
+        y|yes|Yes|YES)
+            exit 0;;
+        [nN]*)
+            exit 1;;
+        *)
+            exit 1;;
+    esac
+}
+ask "$@"

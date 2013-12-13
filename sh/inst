@@ -1,18 +1,28 @@
 #!/bin/sh
-# 2013/12/02, sunsd
+# 2013/12/13, sunsd
 
 HTDOCS=$CCRUN/htdocs
 
-proj=$(pn)
-module="webframe"
-if [ $# -gt 0 ]; then
-    module=$1
+pwd=`pwd`
+pd=$(pd)
+[ $# -gt 0 ] && module=$1 || module=$MOD
+if [ "$module" = "" ]; then
+    echo "Warning: module was not specified!" >&2
+    if [[ $pwd = *ccsrc* ]]; then
+        guess_mod=`echo $pwd|cut -d/ -f5`
+        (ask "Do you mean this? $guess_mod")
+        [ $? -ne 0 ] && exit 1
+        module=$guess_mod
+    else
+        exit 1
+    fi
 fi
-makefile="/project/$proj/ccsrc/$module/Makefile"
+makefile="$pd/$module/Makefile"
 if [ -e $makefile ]; then
     INSTDIR=$(grep -m 1 "^INSTALLDIR" $makefile|cut -d= -f2|tr '()' '{}')
     INSTDIR=$(eval echo $INSTDIR)
     echo $INSTDIR
 else
-    echo "Error: module not found!"
+    echo "Error: module {$module} not found!" >&2
+    exit 1
 fi

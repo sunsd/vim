@@ -5,13 +5,13 @@ echo "$1"|grep -q '^[0-9]\+$'
 if [ $? -eq 0 ]; then
     let f=$1+1
     pwd=`pwd`
-    bn=`echo "$pwd"|cut -d/ -f$f`
+    bn=`echo $pwd|cut -d/ -f$f`
     if [ "$bn" = "" ]; then
-        dir="$@"
+        dir=$pwd
     else
         dir=`echo "$pwd"|sed "1 s/\/$bn.*/\/$bn/"`
     fi
-    echo cd $dir
+    echo $dir
     cd $dir
 else
     cd "$@"

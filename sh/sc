@@ -1,0 +1,18 @@
+#!/bin/sh
+# 2013/12/13, sunsd
+# sc, differ from cs
+
+module="webframe"
+if [ $# -gt 0 ]; then
+    module=$1
+fi
+pwd=`pwd`
+instdir=$(inst $module)
+moddir=$(pd)/$module
+
+if [[ "$pwd" = ${CCRUN}/* ]]; then
+    cmd="cd $moddir/${pwd#$instdir}"
+else
+    cmd="cd $instdir/${pwd#$moddir}"
+fi
+eval $cmd

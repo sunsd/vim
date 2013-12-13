@@ -2,18 +2,18 @@
 # 2013/12/02, sunsd
 
 f=$1
-module="webframe"
+pwd=`pwd`
+module=$MOD
 if [ "${f:0:1}" != "/" ]; then
-    f="`pwd`/$f"
+    f="$pwd/$f"
 fi
 if [[ "$f" = */$module* ]]; then
     INSTDIR=$(inst $module)
-    cmd=".dosu cp $f $INSTDIR/${f#*webframe/}"
+    [ $? -ne 0 ] && exit 1
+    cmd=".dosu cp $f $INSTDIR/${f#*$module/}"
     echo $cmd
     eval $cmd
-    if [ $? -eq 0 ]; then
-        echo "[7mDone.[0m"
-    fi
+    [ $? -eq 0 ] && echo "[7mDone.[0m"
 else
-    echo "Path is not valid!"
+    echo "Error: Path is not valid!" >&2
 fi
