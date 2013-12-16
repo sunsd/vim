@@ -1,9 +1,7 @@
-" 2013/04/18 sunsd
-if(has("win32") || has("win95") || has("win64") || has("win16"))
-    let g:iswindows=1
-else
-    let g:iswindows=0
-endif
+"customed by sunsd
+
+set clipboard=unnamed
+"set path=.,/usr/include,,$(pd)/include
 
 " compatible
 set nocp
@@ -29,10 +27,10 @@ set fencs=utf-8,usc-bom,cp936,gb18030,gbk,gb2312,big5,enc-jp
 " fileformats
 set ffs=unix,dos,mac
 
-"backup
+" backup
 set bk
-"backupdir, set in ~/.bashrc: export BDIR=~/tmp/vim
-set bdir=$BDIR
+"backupdir, set in ~/.bashrc: export VIMBKDIR=~/tmp/vim
+set bdir=$VIMBKDIR
 
 au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
 
@@ -78,26 +76,6 @@ set ru
 " lazyredraw
 set nolz
 
-
-if(g:iswindows==1)
-    if has('mouse')
-        set mouse=a
-    endif
-    au GUIEnter * simalt ~x
-endif
-
-" guifont, guifontwide
-if(g:iswindows==1)
-    if (has("gui_running"))
-        set gfn=DejaVu_Sans_Mono:h11:cANSI
-        set gfw=微软雅黑:h11:cGB2312
-    endif
-else
-    if (has("gui_running"))
-        set gfn=DejaVu\ Sans\ Mono\ 11
-    endif
-endif
-
 "<<< vundle
 set nocp
 filetype off
@@ -120,7 +98,7 @@ Bundle 'molokai'
 let g:molokai_original=1
 
 " ftplugin
-Bundle 'xml.vim'
+"Bundle 'xml.vim'
 "Bundle 'lint.vim'
 "Bundle 'skammer/vim-css-color'
 let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -135,19 +113,19 @@ Bundle 'L9'
 Bundle 'ack.vim'
 " test ag, tmux, etc sometime
 Bundle 'Mark'
-Bundle 'ViMail'
-Bundle 'Syntastic'
-Bundle 'mattn/emmet-vim'
-Bundle 'csv.vim'
+"Bundle 'ViMail'
+"Bundle 'Syntastic'
+"Bundle 'mattn/emmet-vim'
+"Bundle 'csv.vim'
 "Bundle 'cscope.vim'
-Bundle 'dbext.vim'
+"Bundle 'dbext.vim'
 
 Bundle 'ctrlp.vim'
   let g:ctrlp_cmd = 'CtrlPMRU'
 Bundle 'AutoClose'
 Bundle 'matchit.zip'
 Bundle 'ShowTrailingWhitespace'
-Bundle 'jsbeautify'
+"Bundle 'jsbeautify'
 "Bundle 'EasyMotion'
 "Bundle 'FencView.vim'
 Bundle 'The-NERD-tree'
@@ -173,11 +151,6 @@ filetype plugin indent on
 
 let mapleader = ","
 
-let g:winManagerWindowLayout='FileExplorer' "|TagList
-"let g:persistentBehaviour=0
-"let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplMapWindowNavVim = 1
-
 map <C-W>t :tabnew<cr>
 
 map <F11> :call Cf2wf()<CR>
@@ -188,63 +161,3 @@ function Cf2wf()
         execute "!wp ".path
     endif
 endfunction
-
-map <F7> :call Do_CsTag()<CR>
-"<<<
-function Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('ctags'))
-        "silent! execute "!ctags -R --c-types=+p --fields=+S *"
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-        "ctags -R --languages=c++ --langmap=c++:+.inl -h +.inl --c++-kinds=+px --fields=+iaSKz --extra=+q --exclude=path --exclude=file.ext
-    endif
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
-        else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
-        endif
-        silent! execute "!cscope -b"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-endfunction
-">>>

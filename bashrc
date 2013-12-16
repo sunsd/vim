@@ -3,7 +3,7 @@ alias a='alias'
 alias ...='. ~/.bashrc'
 alias vi='vim'
 #backup dir, used in ~/.vimrc
-export BDIR=~/tmp/vim
+export VIMBKDIR=~/tmp/vim
 alias ls='ls --color=auto -h'
 alias l='ls -alFh'
 alias xo='xdg-open'
