@@ -8,13 +8,14 @@ pwd=`pwd`
 pd=$(pd)
 [ $# -gt 0 ] && module=$1 || module=$MOD
 if [ "$module" = "" ]; then
-    echo "Warning: module was not specified!" >&2
+    echo "Warning: env MOD is null!" >&2
     if [[ $pwd = *ccsrc* ]]; then
         guess_mod=`echo $pwd|cut -d/ -f5`
-        (confirm "Take {$guess_mod} as the module afterwards.")
+        (confirm "Take { $guess_mod } as the module this time.")
         [ $? -ne 0 ] && exit 1
         module=$guess_mod
     else
+        echo "Error: None possible value for MOD!" >&2
         exit 1
     fi
 fi
@@ -24,6 +25,6 @@ if [ -e $makefile ]; then
     INSTDIR=$(eval echo $INSTDIR)
     echo $INSTDIR
 else
-    echo "Error: module {$module} not found!" >&2
+    echo "Error: module { $module } not found!" >&2
     exit 1
 fi

@@ -11,7 +11,7 @@ fi
 if [[ "$f" = */$module* ]]; then
     INSTDIR=$(inst $module)
     [ $? -ne 0 ] && exit 1
-    cmd=".dosu install --backup=numbered -C -D -m 777 $f $INSTDIR/${f#*$module/}"
+    cmd=".dosu install --backup=numbered -C -D -m 640 $f $INSTDIR/${f#*$module/}"
     echo $cmd
     eval $cmd
     [ $? -eq 0 ] && echo "[7mDone.[0m"

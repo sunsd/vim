@@ -15,6 +15,6 @@ if [ $? -eq 0 ]; then
     fi
     echo $dir
 else
-    echo "Warning: argument is not right!" >&2
+    echo "Warning: argument must a number!" >&2
     exit 1
 fi
