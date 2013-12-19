@@ -10,12 +10,14 @@ pd=$(pd)
 if [ "$module" = "" ]; then
     echo "Warning: env MOD is null!" >&2
     if [[ $pwd = *ccsrc* ]]; then
-        guess_mod=`echo $pwd|cut -d/ -f5`
-        (confirm "Take { $guess_mod } as the module this time.")
+        n=5
+        [[ $pwd = /ccsrc* ]] && n=3
+        guess_mod=`echo $pwd|cut -d/ -f$n`
+        (confirm "Automatically set MOD = { $guess_mod }")
         [ $? -ne 0 ] && exit 1
         module=$guess_mod
     else
-        echo "Error: None possible value for MOD!" >&2
+        echo "Error: none possible value for MOD!" >&2
         exit 1
     fi
 fi

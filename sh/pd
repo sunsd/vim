@@ -10,10 +10,10 @@ pdirname()
         if [[ $dir = /ccsrc* ]]; then
             dir=$(ct 2)
         elif [[ $dir != */ccsrc* ]]; then
-            echo "Error: None possible value for PROJ!" >&2
+            echo "Error: none possible value for PROJ!" >&2
             exit 1
         fi
-        echo "automatically set to PROJ=$dir" >&2
+        echo "Automatically set PROJ dir = { $dir }" >&2
     fi
     echo $dir
 }
