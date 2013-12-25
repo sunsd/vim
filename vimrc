@@ -34,6 +34,9 @@ set bdir=$VIMBKDIR
 
 au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
 
+""
+au FileType vim,html,css,javascript,yaml setl ts=2 sw=2
+
 " history
 set hi=100
 
@@ -95,13 +98,13 @@ Bundle 'Enhanced-Javascript-syntax'
 " color
 Bundle 'desert.vim'
 Bundle 'molokai'
-let g:molokai_original=1
+  let g:molokai_original=1
 
 " ftplugin
 "Bundle 'xml.vim'
 "Bundle 'lint.vim'
 "Bundle 'skammer/vim-css-color'
-let g:cssColorVimDoNotMessMyUpdatetime = 1
+  let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " indent
 Bundle 'OOP-javascript-indentation'
@@ -115,10 +118,17 @@ Bundle 'ack.vim'
 Bundle 'Mark'
 "Bundle 'ViMail'
 "Bundle 'Syntastic'
-"Bundle 'mattn/emmet-vim'
+Bundle 'mattn/emmet-vim'
 "Bundle 'csv.vim'
 "Bundle 'cscope.vim'
 "Bundle 'dbext.vim'
+"Bundle 'instant-markdown.vim'
+  let g:instant_markdown_slow = 1
+  let g:instant_markdown_autostart = 0
+  " :InstantMarkdownPreview
+Bundle 'plasticboy/vim-markdown'
+  let g:vim_markdown_folding_disabled=1
+  let g:vim_markdown_initial_foldlevel=1
 
 Bundle 'ctrlp.vim'
   let g:ctrlp_cmd = 'CtrlPMRU'
