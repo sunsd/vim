@@ -1,7 +1,7 @@
 "customed by sunsd
 
 set clipboard=unnamed
-"set path=.,/usr/include,,$(pd)/include
+set path=.,/usr/include,,$(pd)/include
 
 " compatible
 set nocp
@@ -23,19 +23,24 @@ set ww=b,s,<,>,[,]
 " encoding
 set enc=utf-8
 " fileencodings
-set fencs=utf-8,usc-bom,cp936,gb18030,gbk,gb2312,big5,enc-jp
+set fencs=utf-8,utf-16le,usc-bom,cp936,gb18030,gbk,gb2312,big5,enc-jp
 " fileformats
 set ffs=unix,dos,mac
+
+" foldmethod
+set fdm=syntax
+" toggle with |zi|
+set nofen
 
 " backup
 set bk
 "backupdir, set in ~/.bashrc: export VIMBKDIR=~/tmp/vim
 set bdir=$VIMBKDIR
 
-au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
-
 ""
-au FileType vim,html,css,javascript,yaml setl ts=2 sw=2
+au BufNewFile,BufRead *.ycql setf sql
+au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
+au FileType vim,html setl ts=2 sw=2
 
 " history
 set hi=100
@@ -103,8 +108,6 @@ Bundle 'molokai'
 " ftplugin
 "Bundle 'xml.vim'
 "Bundle 'lint.vim'
-"Bundle 'skammer/vim-css-color'
-  let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " indent
 Bundle 'OOP-javascript-indentation'
@@ -118,17 +121,10 @@ Bundle 'ack.vim'
 Bundle 'Mark'
 "Bundle 'ViMail'
 "Bundle 'Syntastic'
-Bundle 'mattn/emmet-vim'
+"Bundle 'mattn/emmet-vim'
 "Bundle 'csv.vim'
 "Bundle 'cscope.vim'
 "Bundle 'dbext.vim'
-"Bundle 'instant-markdown.vim'
-  let g:instant_markdown_slow = 1
-  let g:instant_markdown_autostart = 0
-  " :InstantMarkdownPreview
-Bundle 'plasticboy/vim-markdown'
-  let g:vim_markdown_folding_disabled=1
-  let g:vim_markdown_initial_foldlevel=1
 
 Bundle 'ctrlp.vim'
   let g:ctrlp_cmd = 'CtrlPMRU'
@@ -144,12 +140,12 @@ Bundle 'The-NERD-tree'
   let NERDTreeWinSize=30
 Bundle 'The-NERD-Commenter'
   map <c-h> ,c<space>
-Bundle 'UltiSnips'
-  let g:UltiSnipsExpandTrigger="<c-j>"
-  let g:UltiSnipsJumpForwardTrigger="<c-j>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"Bundle 'UltiSnips'
+  "let g:UltiSnipsExpandTrigger="<c-j>"
+  "let g:UltiSnipsJumpForwardTrigger="<c-j>"
+  "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "Bundle 'Tabular'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'ervandew/supertab'
 
 "Bundle 'Lokaltog/vim-powerline'
@@ -163,11 +159,18 @@ let mapleader = ","
 
 map <C-W>t :tabnew<cr>
 
-map <F11> :call Cf2wf()<CR>
-"copy file to webframe dir
-function Cf2wf()
+map <F11> :call C2InstDir()<CR>
+"copy file to the install directory
+function C2InstDir()
     let path = expand("%:p")
     if(executable('wp'))
         execute "!wp ".path
     endif
+endfunction
+map <F10> :call C2Lf()<CR>
+"compare to the latest file in $VIMBKDIR, e.g. last version.
+function C2Lf()
+    let path = expand("%:p")
+    let file = expand("%:p:t")
+    execute "!ls -t $VIMBKDIR/".file."* |head -n 1 |xargs -I {} diff ".path." {}"
 endfunction
