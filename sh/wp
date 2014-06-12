@@ -2,6 +2,17 @@
 # 2013/12/02, sunsd
 # install the given file
 
+list=""
+declare -i L=0
+
+usage()
+{
+    echo "usage: wp [-l] file"
+    exit 1
+}
+
+install()
+{
 f=$1
 pwd=`pwd`
 module=$MOD
@@ -11,10 +22,34 @@ fi
 if [[ "$f" = */$module* ]]; then
     INSTDIR=$(inst $module)
     [ $? -ne 0 ] && exit 1
-    cmd=".dosu install --backup=numbered -C -D -m 640 $f $INSTDIR/${f#*$module/}"
+    cmd=".dosu install --backup=simple -C -D -m 640 $f $INSTDIR/${f#*$module/}"
     echo $cmd
     eval $cmd
     [ $? -eq 0 ] && echo "[7mDone.[0m"
 else
     echo "Error: Path is not valid!" >&2
+fi
+}
+
+while getopts "l:" OPTION
+do
+    case $OPTION in
+        l) L=1
+        list=$OPTARG
+        ;;
+        \?)
+        usage
+        ;;
+    esac
+done
+
+if [ $L -eq 1 ]; then
+    while read line
+    do
+        install $line
+    done < $list
+elif [ $# -eq 1 ]; then
+    install $1
+else
+    usage
 fi

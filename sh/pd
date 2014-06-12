@@ -15,6 +15,11 @@ pdirname()
         fi
         echo "Automatically set PROJ dir = { $dir }" >&2
     fi
-    echo $dir
+    if [ -d $dir ]; then
+        echo $dir
+    else
+        echo "project $PROJ does not exist!" >&2
+        exit 1
+    fi
 }
 pdirname
