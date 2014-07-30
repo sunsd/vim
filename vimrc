@@ -39,7 +39,7 @@ set bdir=$VIMBKDIR
 
 ""
 au BufNewFile,BufRead *.ycql setf sql
-au BufWritePre * let &bex = '-' . strftime("%y%b%d%R") . '~'
+au BufWritePre * let &bex = '~' . strftime("%m%d%H%M")
 au FileType vim,html setl ts=2 sw=2
 
 " history
@@ -164,7 +164,7 @@ map <F11> :call C2InstDir()<CR>
 function C2InstDir()
     let path = expand("%:p")
     if(executable('wp'))
-        execute "!wp ".path
+        exe "!wp ".path
     endif
 endfunction
 map <F10> :call C2Lf()<CR>
@@ -172,5 +172,12 @@ map <F10> :call C2Lf()<CR>
 function C2Lf()
     let path = expand("%:p")
     let file = expand("%:p:t")
-    execute "!ls -t $VIMBKDIR/".file."* |head -n 1 |xargs -I {} diff ".path." {}"
+    exe "!ls -t $VIMBKDIR/".file."~* |head -1 |xargs -I {} diff ".path." {}"
 endfunction
+
+let g:LargeFile = 1048576 * 0.5
+augroup LargeFile
+  au BufReadPre * let f=expand("<afile>") |
+      \if getfsize(f) > g:LargeFile | set ei+=FileType | setlocal noswf bh=unload bt=nowrite ul=-1 |
+      \else | set ei-=FileType | endif
+augroup END
